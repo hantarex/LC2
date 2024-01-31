@@ -15,9 +15,6 @@ export class AppComponent {
   constructor(
     public message: MessageService,
   ) {
-    this.message.messages$.subscribe(r => {
-      console.log(r)
-    });
   }
 
   title = 'LC2';
