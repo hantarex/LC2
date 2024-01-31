@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {concatMap, delay, from, of, repeat, scan, switchMap} from 'rxjs';
+import {concatMap, delay, from, map, of, repeat, scan, switchMap} from 'rxjs';
 import {combineLatest} from 'rxjs/internal/operators/combineLatest';
 
 @Injectable({
@@ -17,6 +17,17 @@ export class MessageService {
   public messages$ = from(this.messages).pipe(
     concatMap(r => of(r).pipe(delay(300))),
     repeat(),
+    map(r => {
+      return {
+        msg: r,
+        count: 0,
+      }
+    }),
+    scan((acc, curr) => {
+      curr.count = acc.count + 1;
+      return curr;
+    }),
+    map(r => `${r.count} - ${r.msg}`),
   );
   constructor() {
     this.messages$.subscribe(r => {
