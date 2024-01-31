@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {concatMap, delay, from, map, of, repeat, scan, switchMap} from 'rxjs';
-import {combineLatest} from 'rxjs/internal/operators/combineLatest';
+import {concatMap, delay, from, map, of, repeat, scan} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
