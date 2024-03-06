@@ -6,3 +6,15 @@
   <li>Удалять старые сообщения из окна со скроллом. Если больше 10.</li>
   <li>Реализовать туже механику для скролла, что и п.1 и п.2</li>
 </ol>
+<button (click)="toggleBuffer()">Вкл/Выкл</button>
+<div class="msg" *ngIf="(messages$ | async) as messages">
+  {{ messages[messages.length - 1] }}
+</div>
+<div class="scroll" *ngIf="(latest10Messages$ | async) as latest10">
+  <div class="scroll-inner">
+    <div class="scroll-item"
+      *ngFor="let message of latest10; trackBy: trackByFn">
+      {{ message }}
+    </div>
+  </div>
+</div>
