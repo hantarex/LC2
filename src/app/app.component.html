@@ -6,3 +6,9 @@
   <li>Удалять старые сообщения из окна со скроллом. Если больше 10.</li>
   <li>Реализовать туже механику для скролла, что и п.1 и п.2</li>
 </ol>
+
+<h1 class="box">{{ lastMessage() || 'Empty' }}</h1>
+<button (click)="toggleFreeze()">Freeze {{ freezed() ? 'off' : 'on' }}</button>
+<div class="messages">
+  <div class="message" *ngFor="let message of messages$ | async">{{ message }}</div>
+</div>
